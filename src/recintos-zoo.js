@@ -68,14 +68,15 @@ class RecintosZoo {
             if (tipoAnimalMaiusculo === 'MACACO') {
                 // Macacos não podem estar sozinhos
                 if (quantidade === 1 && Object.keys(animais).length === 0) return;
-
-                // Macacos não podem estar com carnívoros
+                // Herbívoros não podem estar com carnívoros
                 if (Object.keys(animais).some(esp => {
                     const infoExistente = this.animaisInfo.get(esp.toUpperCase());
                     return infoExistente && infoExistente.carnivoro === true;
                 })) return;
+
             }
-            if (['LEAO', 'LEOPARDO'].includes(tipoAnimalMaiusculo)) {
+
+            if (['LEAO', 'LEOPARDO', 'CROCODILO'].includes(tipoAnimalMaiusculo)) {
                 // Carnívoros não podem estar com herbívoros
                 if (Object.keys(animais).some(animal => {
                     const infoExistente = this.animaisInfo.get(animal.toUpperCase());
@@ -105,5 +106,6 @@ class RecintosZoo {
         };
     }
 }
+
 
 export { RecintosZoo as RecintosZoo };
